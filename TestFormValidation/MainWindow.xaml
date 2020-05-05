@@ -1,0 +1,23 @@
+﻿<Window x:Class="TestFormValidation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TestFormValidation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow" Width="800" Height="450"
+        TextElement.FontSize="36"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+
+    </Window.DataContext>
+    <DockPanel>
+        <UniformGrid DockPanel.Dock="Top">
+            <TextBlock>Double</TextBlock>
+            <TextBox Text="{Binding Dvalue}" />
+            <TextBlock>String</TextBlock>
+            <TextBox Text="{Binding Svalue}" />
+        </UniformGrid>
+        <Button Command="{Binding SaveCmd}" Content="Save" />
+    </DockPanel>
+</Window>
