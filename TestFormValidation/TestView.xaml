@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TestFormValidation.UserControlView"
+﻿<UserControl x:Class="TestFormValidation.TestView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
-        <TextBlock Text="Double" />
-        <TextBox Width="100" Text="{Binding VM.UCdouble}" />
+        <TextBlock Width="200" Text="{Binding VMString, RelativeSource={RelativeSource AncestorType=local:TestUC}}" />
+        <TextBox Width="100" Text="{Binding VMDouble, RelativeSource={RelativeSource AncestorType=local:TestUC}}" />
     </StackPanel>
 </UserControl>

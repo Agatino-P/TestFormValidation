@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace TestFormValidation
 {
     /// <summary>
-    /// Interaction logic for UserControlView.xaml
+    /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class UserControlView : UserControl
+    public partial class TestView : UserControl
     {
-        public UserControlViewModel VM { get; set; }
-        public UserControlView(UserControlViewModel vm)
+
+        public TestView()
         {
-            VM = vm;
             InitializeComponent();
         }
     }

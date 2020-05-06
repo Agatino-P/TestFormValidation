@@ -21,9 +21,21 @@ namespace TestFormValidation
             () => saveCmdCanExecute()
             ));
 
+        private TestViewModel _containedTestViewModel;
+            public TestViewModel ContainedTestViewModel { get => _containedTestViewModel; set { Set(() => ContainedTestViewModel, ref _containedTestViewModel, value); }}
+        
+        //TestViewModel ContainedTestViewModel
+
+        public MainWindowViewModel()
+        {
+            Dvalue = 2;
+            Svalue = "2";
+            ContainedTestViewModel = new TestViewModel(11);
+
+        }
         private void saveCmdExecuted()
         {
-            MessageBox.Show("Saved!");
+            MessageBox.Show(Dvalue.ToString(),"Saved!");
         }
 
         private bool  saveCmdCanExecute()
