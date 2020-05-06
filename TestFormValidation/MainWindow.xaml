@@ -13,7 +13,7 @@
     </Window.DataContext>
     <DockPanel>
         <UniformGrid DockPanel.Dock="Top">
-            <TextBlock>Double</TextBlock>
+            <TextBlock DockPanel.Dock="Top" Text="{Binding TestLabel, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" />
             <TextBox Text="{Binding Dvalue}" />
             <TextBlock>String</TextBlock>
             <TextBox Text="{Binding Svalue}" />

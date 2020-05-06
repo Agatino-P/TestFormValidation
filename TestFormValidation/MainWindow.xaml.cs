@@ -21,9 +21,25 @@ namespace TestFormValidation
     {
         public delegate bool AllFieldsValidatorDelegate();
 
+
+
+        public string TestLabel
+        {
+            get { return (string)GetValue(TestLabelProperty); }
+            set { SetValue(TestLabelProperty, value); }
+        }
+
+
+        
+        public static readonly DependencyProperty TestLabelProperty =
+            DependencyProperty.Register("TestLabel", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
+
+
+
         public MainWindow()
         {
             InitializeComponent();
+            TestLabel = "Pippo";
         }
 
 
