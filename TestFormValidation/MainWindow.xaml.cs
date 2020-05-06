@@ -41,9 +41,9 @@ namespace TestFormValidation
 
         private static void AllFieldsValidator_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d == null)
-                return;
-            return
+            //if (d == null)
+            //    return;
+            //return
         }
 
         private bool IsValid(DependencyObject obj)

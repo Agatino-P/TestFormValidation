@@ -28,7 +28,7 @@ namespace TestFormValidation
 
         private bool  saveCmdCanExecute()
         {
-            BindingOperations.GetSourceUpdatingBindings()
+            //BindingOperations.GetSourceUpdatingBindings();
             return true;
         }
     }
