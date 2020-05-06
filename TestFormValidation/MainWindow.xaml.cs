@@ -12,22 +12,27 @@ namespace TestFormValidation
 
 
 
-        public MainWindowViewModel TestVM
+        public TestViewModel TestVM
         {
-            get { return (MainWindowViewModel)GetValue(TestVMProperty); }
+            get { return (TestViewModel)GetValue(TestVMProperty); }
             set { SetValue(TestVMProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ViewModel.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TestVMProperty =
-            DependencyProperty.Register("TestVM", typeof(MainWindowViewModel), typeof(MainWindow), new PropertyMetadata(null));
+            DependencyProperty.Register("TestVM", typeof(TestViewModel), typeof(MainWindow), new PropertyMetadata(null));
 
 
         public MainWindow()
         {
             InitializeComponent();
-            TestVM = (MainWindowViewModel)DataContext;
+            
+            TestVM = new TestViewModel(6);
+            TestVM.VMString = "TestVM String";
+            TestVM.VMDouble = 111;
             MainContent.Content = TestVM;
+ 
+
         }
 
         /*

@@ -30,12 +30,13 @@ namespace TestFormValidation
         {
             Dvalue = 2;
             Svalue = "2";
-            ContainedTestViewModel = new TestViewModel(11);
+            ContainedTestViewModel = new TestViewModel(11, "ContainedTestViewModel");
 
         }
         private void saveCmdExecuted()
         {
-            MessageBox.Show(Dvalue.ToString(),"Saved!");
+            MessageBox.Show(Dvalue.ToString(), "MainWindowViewModel Property");
+            MessageBox.Show(ContainedTestViewModel.VMDouble.ToString(), "MainWindowViewModel Property");
         }
 
         private bool  saveCmdCanExecute()

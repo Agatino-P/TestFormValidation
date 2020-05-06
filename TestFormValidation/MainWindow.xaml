@@ -14,15 +14,12 @@
         <DataTemplate x:Key="TVTemplate" DataType="{x:Type local:TestViewModel}">
             <local:TestView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TestViewModel}">
+            <local:TestView />
+        </DataTemplate>
+
     </Window.Resources>
     <DockPanel>
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Uc not bound">
-            <local:TestUC DockPanel.Dock="Top" UCDouble="3" UCString="No Bind" />
-
-        </GroupBox>
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="UC pointing to DataContext">
-            <local:TestUC DockPanel.Dock="Top" UCDouble="{Binding Dvalue, Mode=TwoWay}" UCString="Bind" />
-        </GroupBox>
         <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Direct on MainWindow">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="200" Text="Double:" />
@@ -30,19 +27,30 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Content and View">
-            <ContentControl x:Name="MainContent" ContentTemplate="{DynamicResource TVTemplate}" />
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Uc not bound">
+            <local:TestUC DockPanel.Dock="Top" UCDouble="3" UCString="No Bind" />
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Content and View">
-            <ContentControl x:Name="MainContent" ContentTemplate="{DynamicResource TVTemplate}" />
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="UC pointing to DataContext (MainWindowViewModel">
+            <local:TestUC DockPanel.Dock="Top" UCDouble="{Binding Dvalue, Mode=TwoWay}" UCString="Bind" />
         </GroupBox>
 
 
-
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Straight View">
-            <local:TestView />
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Content and View in Mainwidow.xaml.cs">
+            <ContentControl x:Name="MainContent" />
         </GroupBox>
+
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="View inside MainViewModel">
+            <ContentControl>
+                <ContentPresenter>
+                    <ContentPresenter.Content>
+                        <Binding Path="ContainedTestViewModel" />
+                    </ContentPresenter.Content>
+                </ContentPresenter>
+            </ContentControl>
+        </GroupBox>
+
+
         <Button Command="{Binding SaveCmd}" Content="Save" DockPanel.Dock="Top" />
     </DockPanel>
 </Window>
