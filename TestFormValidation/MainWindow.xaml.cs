@@ -44,6 +44,9 @@ namespace TestFormValidation
             InitializeComponent();
             DataContext = this;
 
+            UserControlViewModel userControlViewModel = new UserControlViewModel();
+            UserControlView userControlView = new UserControlView(userControlViewModel);
+            UCcontent.Content = userControlView;
             TestLabel = "Pippo";
         }
 

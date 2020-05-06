@@ -18,6 +18,11 @@
             <TextBlock>String</TextBlock>
             <TextBox Text="{Binding VM.Svalue}" />
         </UniformGrid>
+
+        <GroupBox DockPanel.Dock="Top" Header="UserControl">
+            <ContentControl x:Name="UCcontent" />
+        </GroupBox>
         <Button Command="{Binding SaveCmd}" Content="Save" />
+
     </DockPanel>
 </Window>
