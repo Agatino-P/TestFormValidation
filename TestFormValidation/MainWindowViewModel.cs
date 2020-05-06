@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI;
 using System.Windows;
 using System.Windows.Data;
 
@@ -20,6 +21,36 @@ namespace TestFormValidation
             () => saveCmdExecuted(),
             () => saveCmdCanExecute()
             ));
+
+
+        private RelayCommand<EventArgs> _errorEventCmd;
+        public RelayCommand<EventArgs> ErrorEventCmd => _errorEventCmd ?? (_errorEventCmd = new RelayCommand<EventArgs>(
+            (ea) => FunnyMsg(ea),
+            (ea) => { return 1 == 1; },
+			keepTargetAlive:true
+            ));
+		
+        private void FunnyMsg(EventArgs eventArgs)
+        {
+            System.Windows.Controls.ValidationErrorEventArgs validateErrorArgs= eventArgs as System.Windows.Controls.ValidationErrorEventArgs;
+
+            switch (validateErrorArgs.Action)
+            {
+                case System.Windows.Controls.ValidationErrorEventAction.Added:
+                    BindingExpression bindingExpression= validateErrorArgs.Error.BindingInError  as BindingExpression;
+                    MessageBox.Show(validateErrorArgs.Error.ErrorContent.ToString()+"\nOn "+ bindingExpression.ParentBinding.Path.Path, 
+                        "Another error... come on!");
+                    break;
+                case System.Windows.Controls.ValidationErrorEventAction.Removed:
+                    MessageBox.Show("You solved: "+validateErrorArgs.Error.ErrorContent.ToString(), "Better late than never!");
+                    break;
+                default:
+                    break;
+            }
+            
+            
+        }
+
 
         private TestViewModel _containedTestViewModel;
             public TestViewModel ContainedTestViewModel { get => _containedTestViewModel; set { Set(() => ContainedTestViewModel, ref _containedTestViewModel, value); }}
