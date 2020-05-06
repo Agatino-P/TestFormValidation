@@ -35,6 +35,11 @@ namespace TestFormValidation
 
         }
 
+        private void DockPanel_Error(object sender, ValidationErrorEventArgs e)
+        {
+            MessageBox.Show("Basta errori!");
+        }
+
         /*
             public delegate bool AllFieldsValidatorDelegate();
                 public string TestLabel

@@ -5,8 +5,7 @@
         xmlns:local="clr-namespace:TestFormValidation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow" Width="800" Height="450"
-        TextElement.FontSize="18"
-        mc:Ignorable="d">
+        TextElement.FontSize="18" mc:Ignorable="d">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -19,34 +18,50 @@
         </DataTemplate>
 
     </Window.Resources>
-    <DockPanel>
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Direct on MainWindow">
+    <DockPanel Validation.Error="DockPanel_Error">
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top"
+                  Header="Direct on MainWindow">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="200" Text="Double:" />
-                <TextBox Width="100" Text="{Binding Dvalue}" />
+                <TextBox Width="100" Text="{Binding Dvalue, NotifyOnValidationError=True}">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <Border BorderBrush="DarkOrange" BorderThickness="5">
+                                <AdornedElementPlaceholder />
+                            </Border>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Uc not bound">
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top"
+                  Header="Uc not bound">
             <local:TestUC DockPanel.Dock="Top" UCDouble="3" UCString="No Bind" />
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="UC pointing to DataContext (MainWindowViewModel) dependancy Properties">
-            <local:TestUC DockPanel.Dock="Top" UCDouble="{Binding Dvalue}" UCString="Bind" />
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top"
+                  Header="UC pointing to DataContext (MainWindowViewModel) dependancy Properties">
+            <local:TestUC DockPanel.Dock="Top"
+                          UCDouble="{Binding Dvalue}"
+                          UCString="Bind" />
         </GroupBox>
 
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="Content and View in Mainwidow.xaml.cs">
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top"
+                  Header="Content and View in Mainwidow.xaml.cs">
             <ContentControl x:Name="MainContent" />
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="View inside MainViewModel">
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top"
+                  Header="View inside MainViewModel">
             <ContentControl>
                 <Binding Path="ContainedTestViewModel" />
             </ContentControl>
         </GroupBox>
 
 
-        <Button Command="{Binding SaveCmd}" Content="Save" DockPanel.Dock="Top" />
+        <Button Command="{Binding SaveCmd}"
+                Content="Save" DockPanel.Dock="Top" />
     </DockPanel>
 </Window>
