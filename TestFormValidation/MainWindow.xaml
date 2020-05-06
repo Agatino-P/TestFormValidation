@@ -7,16 +7,16 @@
         Title="MainWindow" Width="800" Height="450"
         TextElement.FontSize="36"
         mc:Ignorable="d">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:MainWindowViewModel />
 
-    </Window.DataContext>
+    </Window.DataContext>-->
     <DockPanel>
         <UniformGrid DockPanel.Dock="Top">
             <TextBlock DockPanel.Dock="Top" Text="{Binding TestLabel, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" />
-            <TextBox Text="{Binding Dvalue}" />
+            <TextBox Text="{Binding VM.Dvalue}" />
             <TextBlock>String</TextBlock>
-            <TextBox Text="{Binding Svalue}" />
+            <TextBox Text="{Binding VM.Svalue}" />
         </UniformGrid>
         <Button Command="{Binding SaveCmd}" Content="Save" />
     </DockPanel>

@@ -34,11 +34,16 @@ namespace TestFormValidation
         public static readonly DependencyProperty TestLabelProperty =
             DependencyProperty.Register("TestLabel", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
 
-
+        public MainWindowViewModel VM { get; set; }
 
         public MainWindow()
         {
+             VM = new MainWindowViewModel();
+            VM.Dvalue = 1;
+            VM.Svalue = "S1";
             InitializeComponent();
+            DataContext = this;
+
             TestLabel = "Pippo";
         }
 
