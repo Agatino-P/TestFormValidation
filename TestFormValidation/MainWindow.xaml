@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:TestFormValidation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="MainWindow" Width="800" Height="450"
-        TextElement.FontSize="20"
+        TextElement.FontSize="18"
         mc:Ignorable="d">
     <Window.DataContext>
         <local:MainWindowViewModel />
@@ -31,8 +31,8 @@
             <local:TestUC DockPanel.Dock="Top" UCDouble="3" UCString="No Bind" />
         </GroupBox>
 
-        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="UC pointing to DataContext (MainWindowViewModel">
-            <local:TestUC DockPanel.Dock="Top" UCDouble="{Binding Dvalue, Mode=TwoWay}" UCString="Bind" />
+        <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="UC pointing to DataContext (MainWindowViewModel) dependancy Properties">
+            <local:TestUC DockPanel.Dock="Top" UCDouble="{Binding Dvalue}" UCString="Bind" />
         </GroupBox>
 
 
@@ -42,11 +42,7 @@
 
         <GroupBox BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Header="View inside MainViewModel">
             <ContentControl>
-                <ContentPresenter>
-                    <ContentPresenter.Content>
-                        <Binding Path="ContainedTestViewModel" />
-                    </ContentPresenter.Content>
-                </ContentPresenter>
+                <Binding Path="ContainedTestViewModel" />
             </ContentControl>
         </GroupBox>
 
